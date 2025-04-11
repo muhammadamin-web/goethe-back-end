@@ -38,9 +38,9 @@ Route::get('/', function () {
 
 
 Auth::routes();
-// Route::match(['get', 'post', 'put', 'patch', 'delete'], '/register', function () {
-//     abort(403, 'This route is blocked.');
-// });
+Route::match(['get', 'post', 'put', 'patch', 'delete'], '/register', function () {
+    abort(403, 'This route is blocked.');
+});
 // Auth route'lari
 
 
