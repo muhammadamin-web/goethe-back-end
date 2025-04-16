@@ -31,15 +31,19 @@
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->city }}</td>
                             <td>
-    @php
-        $modules = json_decode($contact->module);
-        $moduleTexts = [
-            '1' => 'Понимание на слух',
-            '2' => 'Понимание прочитанного',
-            '3' => 'Запись',
-            '4' => 'Говорящий',
-        ];
-    @endphp
+                            @php
+    $rawModule = $contact->module;
+    $decodedOnce = json_decode($rawModule);
+    $modules = is_string($decodedOnce) ? json_decode($decodedOnce) : $decodedOnce;
+
+    $moduleTexts = [
+        '1' => 'Понимание на слух',
+        '2' => 'Понимание прочитанного',
+        '3' => 'Запись',
+        '4' => 'Говорящий',
+    ];
+@endphp
+
     @if(is_array($modules))
         @foreach($modules as $module)
             {{ $moduleTexts[$module] ?? 'N/A' }}@if(!$loop->last), @endif <!-- Module matnini ko'rsatish -->
