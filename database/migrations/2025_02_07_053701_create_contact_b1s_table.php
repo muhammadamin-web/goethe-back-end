@@ -16,6 +16,7 @@ class CreateContactB1sTable extends Migration
             $table->string('city');
             $table->json('module'); // Change to JSON type
             $table->date('birth_date');
+            $table->foreignId('test_id')->constrained('limit_b1s')->onDelete('cascade');
             $table->timestamps();
         });
     }

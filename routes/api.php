@@ -7,7 +7,9 @@ use App\Http\Controllers\Api\LimitController;
 use App\Http\Controllers\Contact_a2Controller;
 use App\Http\Controllers\Contact_b1Controller;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\Limit_b1Controller;
+use App\Http\Controllers\LimitController as LimitA1Controller;
+use App\Http\Controllers\Limit_a2Controller as LimitA2Controller;
 
 Route::prefix('admin')->middleware(['check.request.origin'])->group(function () {
     // Remove the middleware temporarily
@@ -19,6 +21,8 @@ Route::prefix('admin')->middleware(['check.request.origin'])->group(function () 
     // Contacts
     Route::get('/contacts/count', [ContactController::class, 'countContacts']);
     Route::get('/limits', [AdminController::class, 'getLimits']);
+    Route::get('/check_limits', [ContactController::class, 'checkLimits']);
+    Route::get('/check_limits_a2', [Contact_a2Controller::class, 'checkLimits']);
     
     
     
@@ -45,5 +49,8 @@ Route::prefix('admin')->middleware(['check.request.origin'])->group(function () 
     Route::get('/contacts/count_b1', [Contact_b1Controller::class, 'countContacts']);
 
     Route::get('/limits_b1', [AdminController::class, 'getLimits_b1']);
+    Route::get('/available_tests_b1', [Limit_b1Controller::class, 'getAvailableTests']);
 
+    Route::get('/available_tests', [LimitA1Controller::class, 'getAvailableTests']);
+    Route::get('/available_tests_a2', [LimitA2Controller::class, 'getAvailableTests']);
 });

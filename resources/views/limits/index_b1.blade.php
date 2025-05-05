@@ -3,23 +3,43 @@
 @section('header', 'Limits')
 
 @section('content')
-    <div class="container">
-        <h2>Limit Management B1</h2>
-        <form action="{{ route('limits_b1.update') }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="end_date">End date:</label>
-                <input type="date" name="end_date" value="{{ $limit->end_date ? $limit->end_date->format('Y-m-d') : '2025-12-12' }}" class="form-control">
-                         </div>
-            <div class="form-group">
-                <label for="max_submissions">Maximum number of applications:</label>
-                <input type="number" name="max_submissions" value="{{ $limit->max_submissions ?? '' }}" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Update</button>
-        </form>
-        @if(session('success'))
-            <div class="alert alert-success" style="margin-top: 20px;">{{ session('success') }}</div>
-        @endif
+   
+    
+   
+    
+    <div class="container mt-5">
+        <h2>B1 Test Dates</h2>
+        <a href="{{ route('limits_b1.create') }}" class="btn btn-primary mb-3">Create New Test Date</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Max Submissions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($limits as $limit)
+                    <tr>
+                        <td>{{ $limit->name }}</td>
+                        <td>{{ $limit->start_date ? $limit->start_date->format('Y-m-d H:i') : 'Not set' }}</td>
+                        <td>{{ $limit->end_date ? $limit->end_date->format('Y-m-d H:i') : 'Not set' }}</td>
+                        <td>{{ $limit->max_submissions }}</td>
+                        <td>
+                            <a href="{{ route('limits_b1.edit', $limit->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('limits_b1.destroy', $limit->id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+
+    <!-- <hr> -->
 @endsection

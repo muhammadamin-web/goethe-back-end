@@ -17,7 +17,7 @@ class CheckRequestOrigin
     public function handle(Request $request, Closure $next)
     {
         // So'rov kelayotgan URL manzilini tekshirish
-        if (strpos($request->headers->get('origin'), 'goethe-front.uicgroup.tech') === false) {
+        if (strpos($request->headers->get('origin'), '127.0.0.1:3000') === false) {
             return response()->json(['error' => 'Invalid request origin'], 403);
         }
 

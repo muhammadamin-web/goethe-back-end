@@ -14,7 +14,9 @@ class CreateLimitA2sTable extends Migration{
     {
         Schema::create('limit_a2s', function (Blueprint $table) {
             $table->id();
-            $table->date('end_date')->nullable(); // Tugash sanasi
+            $table->string('name'); // Test nomi
+            $table->datetime('start_date'); // Boshlanish sanasi va vaqti
+            $table->datetime('end_date')->nullable(); // Tugash sanasi va vaqti
             $table->integer('max_submissions')->nullable(); // Maksimal murojaatlar soni
             $table->timestamps(); // Yaratuvchi va yangilanish vaqtlarini saqlash
         });

@@ -9,9 +9,10 @@ class Limit_a2 extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['end_date', 'max_submissions'];
+    protected $fillable = ['name', 'start_date', 'end_date', 'max_submissions'];
 
     protected $casts = [
+        'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
     
