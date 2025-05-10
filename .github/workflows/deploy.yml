@@ -1,0 +1,22 @@
+name: Deploy via rsync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Kodni yuklash
+        uses: actions/checkout@v3
+
+      - name: Rsync exclude list yaratish
+        run: |
+          git ls-files --others --ignored --exclude-standard > .rsync-exclude
+
+      - name: Rsync orqali loyihani serverga yuborish
+        run: |
+          rsync -avz --delete --exclude-from='.rsync-exclude' ./ /var/www/goethe-back-end-master/
