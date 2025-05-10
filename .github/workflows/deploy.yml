@@ -17,6 +17,6 @@ jobs:
         run: |
           git ls-files --others --ignored --exclude-standard > .rsync-exclude
 
-      - name: Rsync orqali loyihani serverga yuborish
+      - name: Rsync orqali loyihani serverga yuborish (root bilan)
         run: |
-          rsync -avz --delete --exclude-from='.rsync-exclude' ./ /var/www/goethe-back-end-master/
+          sudo rsync -avz --delete --exclude-from='.rsync-exclude' ./ /var/www/goethe-back-end-master/
