@@ -17,10 +17,13 @@ class CheckRequestOrigin
     public function handle(Request $request, Closure $next)
     {
         // So'rov kelayotgan URL manzilini tekshirish
-        if (strpos($request->headers->get('origin'), 'https://goethe-front.uicgroup.tech/') === false) {
-            return response()->json(['error' => 'Invalid request origin'], 403);
+        $origin = $request->headers->get('origin');
+        
+        // Agar origin null bo'lsa yoki goethe-front.uicgroup.tech domainidan kelgan bo'lsa
+        if ($origin === null || strpos($origin, 'https://goethe-front.uicgroup.tech') !== false) {
+            return $next($request);
         }
-
-        return $next($request);
+        
+        return response()->json(['error' => 'Invalid request origin'], 403);
     }
 }
