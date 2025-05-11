@@ -21,3 +21,4 @@ jobs:
       - name: Rsync orqali loyihani serverga yuborish (root bilan)
         run: |
           sudo rsync -avz --delete --exclude-from='.rsync-exclude' ./ /var/www/goethe-back-end-master/
+
