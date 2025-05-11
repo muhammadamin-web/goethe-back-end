@@ -11,9 +11,10 @@ use App\Http\Controllers\Limit_b1Controller;
 use App\Http\Controllers\LimitController as LimitA1Controller;
 use App\Http\Controllers\Limit_a2Controller as LimitA2Controller;
 
-Route::prefix('admin')->middleware(['check.request.origin'])->group(function () {
+Route::prefix('admin')->group(function () {
     // Remove the middleware temporarily
     // ->middleware(['auth:sanctum', 'admin'])
+    // ->middleware(['check.request.origin'])
     
     // Dashboard
     // Route::get('/dashboard', [AdminController::class, 'dashboard']);

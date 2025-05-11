@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://goethe-front.uicgroup.tech'],
 
     'allowed_origins_patterns' => [],
 
