@@ -16,7 +16,6 @@ jobs:
     steps:
       - name: Kodni yuklash
         uses: actions/checkout@v3
-
       # - name: Rsync exclude list yaratish
       #   run: |
       #     git ls-files --others --ignored --exclude-standard > .rsync-exclude
