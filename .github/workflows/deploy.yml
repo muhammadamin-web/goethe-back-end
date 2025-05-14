@@ -21,6 +21,9 @@ jobs:
       - name: Rsync orqali loyihani serverga yuborish (root bilan)
         run: |
           sudo rsync -avz --delete --exclude-from='.rsync-exclude' ./ /var/www/goethe-back-end-master/
-- name: permession
-  run: |
-    sudo chown -R www-data:www-data /var/www/goethe-back-end-master/
+      - name: Laravel ruxsatlarini sozlash
+        run: |
+          sudo chown -R www-data:www-data /var/www/goethe-back-end-master/storage
+          sudo chown -R www-data:www-data /var/www/goethe-back-end-master/bootstrap/cache
+          sudo chmod -R ug+rwX /var/www/goethe-back-end-master/storage
+          sudo chmod -R ug+rwX /var/www/goethe-back-end-master/bootstrap/cache
