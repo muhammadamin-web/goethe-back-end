@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
 
     env:
-      RSYNC_EXCLUDES: "--exclude=.git/ --exclude=.github/ --exclude=.env --exclude=storage/ --exclude=node_modules/ --exclude=bootstrap/cache/ --exclude=*.zip --exclude=vendor/ --exclude=composer.lock"
+      RSYNC_EXCLUDES: "--exclude=.git/ --exclude=.github/ --exclude=.env --exclude=storage/ --exclude=node_modules/ --exclude=bootstrap/cache/ --exclude=*.zip --exclude=vendor/ --exclude=composer.lock --exclude=public/"
 
     steps:
       - name: Kodni yuklash
